@@ -1,8 +1,24 @@
 <!doctype html>
-<script type="module" crossorigin src="/counter/assets/index-CFJsRj17.js"></script>
-<link rel="stylesheet" crossorigin href="/counter/assets/index-CiVg2Dzl.css">
+<script type="module" crossorigin src="/counter/assets/index-bQdxVGoa.js"></script>
+<link rel="stylesheet" crossorigin href="/counter/assets/index-BG43Nzd4.css">
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#14140f" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<link rel="icon" href="/icons/favicon-32.png" sizes="32x32" />
+<link rel="icon" href="/icons/favicon-16.png" sizes="16x16" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="CABEL" />
 <title>Counter — CABEL</title>
 <main id="app"></main>
+<script>
+  // Absolute paths above and here: the manifest, icons and worker all live at
+  // the deployed root, not under /counter/. They 404 on the 5174 dev server,
+  // which is harmless.
+  if ("serviceWorker" in navigator) {
+    addEventListener("load", () => navigator.serviceWorker.register("/sw.js"));
+  }
+</script>
