@@ -1,0 +1,63 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#14140f" />
+<title>Offline — CABEL</title>
+<style>
+  :root {
+    --bg: #14140f;
+    --panel: #1c1c16;
+    --line: #34342b;
+    --ink: #e8e6dc;
+    --muted: #9b978a;
+    --accent: #b8d44a;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.6 ui-sans-serif, system-ui, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px;
+  }
+  main { width: 100%; max-width: 460px; }
+  .brand {
+    font: 500 13px/1 ui-monospace, monospace;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  h1 { font-size: 22px; font-weight: 500; margin: 0 0 6px; }
+  p.sub { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+    padding: 20px;
+  }
+  button {
+    font: inherit;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    padding: 10px 14px;
+    background: var(--accent);
+    color: #14140f;
+    cursor: pointer;
+  }
+</style>
+<main>
+  <div class="brand">CABEL</div>
+  <h1>You're offline</h1>
+  <p class="sub">CABEL needs a connection to read or save anything.</p>
+  <div class="panel">
+    <p style="margin: 0 0 16px; color: var(--muted); font-size: 14px">
+      Your sign-in is still stored on this device, so you won't need a new link
+      once you're back.
+    </p>
+    <button onclick="location.reload()">Try again</button>
+  </div>
+</main>
