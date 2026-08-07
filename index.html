@@ -1,10 +1,10 @@
 <!doctype html>
-<script type="module" crossorigin src="/assets/index--PB04TVE.js"></script>
-<link rel="stylesheet" crossorigin href="/assets/index-BG43Nzd4.css">
+<script type="module" crossorigin src="/assets/index-CHO37Ujb.js"></script>
+<link rel="stylesheet" crossorigin href="/assets/index-BUsVx4qt.css">
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#14140f" />
+<meta name="theme-color" content="#101013" />
 <meta name="description" content="Your apps, signed in and in one place." />
 <link rel="manifest" href="/manifest.webmanifest" />
 <link rel="icon" href="/icons/favicon-32.png" sizes="32x32" />
@@ -14,7 +14,28 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="CABEL" />
 <title>CABEL</title>
-<main id="app"></main>
+<style>
+  /* Inline so the canvas is already the right colour on the very first paint.
+     The linked stylesheet arrives too late: until it does the browser paints
+     its default white, which reads as a flash on every navigation. */
+  :root { color-scheme: dark; background: #101013; }
+  :root.light { color-scheme: light; background: #f4f6f9; }
+
+  /* Also inline, and for the same reason: a cross-document view transition is
+     only honoured if the opt-in is parsed before the incoming document's first
+     render. From the linked stylesheet it sometimes arrives in time and
+     sometimes doesn't, which is what made the flash intermittent. */
+  @view-transition { navigation: auto; }
+</style>
+<script>
+  // Before first paint, so a light-mode user doesn't see a dark flash while the
+  // bundle loads. shell.js re-applies the same class once it's running.
+  try {
+    if (localStorage.getItem("cabel.theme") === "light")
+      document.documentElement.classList.add("light");
+  } catch {}
+</script>
+<div id="app"></div>
 <script>
   // Registered from both apps so the worker is installed whichever page you
   // land on first. /sw.js sits at the root, so its scope covers /counter/ too.

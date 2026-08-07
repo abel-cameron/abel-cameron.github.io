@@ -1,16 +1,19 @@
 <!doctype html>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#14140f" />
+<meta name="theme-color" content="#101013" />
 <title>Offline — CABEL</title>
 <style>
+  /* Self-contained by necessity: this page is served by the worker with no
+     bundle behind it, so the theme tokens are copied rather than imported.
+     Keep the values in step with packages/db/style.css. */
   :root {
-    --bg: #14140f;
-    --panel: #1c1c16;
-    --line: #34342b;
-    --ink: #e8e6dc;
-    --muted: #9b978a;
-    --accent: #b8d44a;
+    --bg: #101013;
+    --panel: #18181c;
+    --line: #2e2e38;
+    --ink: #ecebe5;
+    --muted: #76767f;
+    --accent: #e08a3e;
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
@@ -31,21 +34,22 @@
     color: var(--accent);
     margin-bottom: 28px;
   }
-  h1 { font-size: 22px; font-weight: 500; margin: 0 0 6px; }
+  h1 { font-size: 22px; font-weight: 600; margin: 0 0 6px; }
   p.sub { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
   .panel {
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 14px;
     background: var(--panel);
     padding: 20px;
   }
   button {
     font: inherit;
+    font-weight: 600;
     border-radius: 8px;
-    border: 1px solid var(--line);
+    border: none;
     padding: 10px 14px;
     background: var(--accent);
-    color: #14140f;
+    color: #08080a;
     cursor: pointer;
   }
 </style>

@@ -8,7 +8,7 @@
 //
 // Bump VERSION to evict every cache on the next activation.
 
-const VERSION = "v1";
+const VERSION = "v2";
 const PAGES = `cabel-pages-${VERSION}`;
 const ASSETS = `cabel-assets-${VERSION}`;
 const OFFLINE_URL = "/offline.html";

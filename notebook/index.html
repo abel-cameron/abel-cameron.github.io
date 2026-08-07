@@ -1,6 +1,6 @@
 <!doctype html>
-<script type="module" crossorigin src="/counter/assets/index-Bq76uXo4.js"></script>
-<link rel="stylesheet" crossorigin href="/counter/assets/index-BUsVx4qt.css">
+<script type="module" crossorigin src="/notebook/assets/index-B2U1KM0c.js"></script>
+<link rel="stylesheet" crossorigin href="/notebook/assets/index-BUsVx4qt.css">
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="CABEL" />
-<title>Counter — CABEL</title>
+<title>Notebook — CABEL</title>
 <style>
   /* Inline so the canvas is already the right colour on the very first paint.
      The linked stylesheet arrives too late: until it does the browser paints
@@ -37,8 +37,8 @@
 <div id="app"></div>
 <script>
   // Absolute paths above and here: the manifest, icons and worker all live at
-  // the deployed root, not under /counter/. They 404 on the 5174 dev server,
-  // which is harmless.
+  // the deployed root, not under /notebook/. They 404 on the dev server, which
+  // is harmless.
   if ("serviceWorker" in navigator) {
     addEventListener("load", () => navigator.serviceWorker.register("/sw.js"));
   }
