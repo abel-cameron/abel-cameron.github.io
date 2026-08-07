@@ -30,7 +30,9 @@ ${v}`}class x extends Error{constructor({message:e,code:r,cause:s,name:n}){var i
     <div class="shell">
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-top">
-          <a class="brand" href="/"><span class="brand-mark">C</span>CABEL</a>
+          <a class="brand" href="/">
+            <img class="brand-mark" src="/icons/icon-192.png" alt="" width="26" height="26" />CABEL
+          </a>
           <button class="icon-btn sidebar-toggle" aria-label="Hide sidebar"
                   aria-controls="sidebar" aria-expanded="true">${$e.menu}</button>
         </div>
