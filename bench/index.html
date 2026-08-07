@@ -1,11 +1,10 @@
 <!doctype html>
-<script type="module" crossorigin src="/assets/index-DnWVnQRn.js"></script>
-<link rel="stylesheet" crossorigin href="/assets/index-WvdFD6NT.css">
+<script type="module" crossorigin src="/bench/assets/index-C_VuDj0X.js"></script>
+<link rel="stylesheet" crossorigin href="/bench/assets/index-WvdFD6NT.css">
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#101013" />
-<meta name="description" content="Your apps, signed in and in one place." />
 <link rel="manifest" href="/manifest.webmanifest" />
 <link rel="icon" href="/icons/favicon-32.png" sizes="32x32" />
 <link rel="icon" href="/icons/favicon-16.png" sizes="16x16" />
@@ -13,7 +12,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="CABEL" />
-<title>CABEL</title>
+<title>Bench — CABEL</title>
 <style>
   /* Inline so the canvas is already the right colour on the very first paint.
      The linked stylesheet arrives too late: until it does the browser paints
@@ -37,8 +36,9 @@
 </script>
 <div id="app"></div>
 <script>
-  // Registered from both apps so the worker is installed whichever page you
-  // land on first. /sw.js sits at the root, so its scope covers /counter/ too.
+  // Absolute paths above and here: the manifest, icons and worker all live at
+  // the deployed root, not under /bench/. They 404 on the dev server, which is
+  // harmless.
   if ("serviceWorker" in navigator) {
     addEventListener("load", () => navigator.serviceWorker.register("/sw.js"));
   }
