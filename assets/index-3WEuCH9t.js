@@ -81,21 +81,42 @@ ${w}`}class O extends Error{constructor({message:e,code:r,cause:s,name:n}){var i
         </div>
         <div class="msg" id="password-msg"></div>
       </dialog>
-    </div>`,Dr().then(({data:S})=>{S&&(document.querySelector(".nav").innerHTML=o(S))}),cr(localStorage.getItem(lr)==="collapsed"),document.querySelectorAll(".sidebar-toggle").forEach(S=>{S.onclick=()=>{const P=!document.querySelector(".shell").classList.contains("collapsed");localStorage.setItem(lr,P?"collapsed":"open"),cr(P)}});const c=document.querySelector("#account"),h=document.querySelector("#account-btn"),u=document.querySelector("#account-theme-label"),f=S=>{c.classList.toggle("open",S),h.setAttribute("aria-expanded",String(S))},d=()=>{u.textContent=Mr()==="light"?"Dark theme":"Light theme"};d(),h.onclick=()=>f(!c.classList.contains("open")),document.querySelector("#account-theme").onclick=()=>{ta(),d()};let p=!!((T=t.user.user_metadata)!=null&&T.has_password);const g=document.querySelector("#password-dialog"),y=document.querySelector("#new-password"),w=document.querySelector("#password-save"),_=document.querySelector("#password-msg"),v=(S,P=!1)=>{_.textContent=S,_.classList.toggle("error",P)},E=()=>{const S=p?"Change password":"Set a password";document.querySelector("#account-password-label").textContent=S,document.querySelector("#password-title").textContent=S,document.querySelector("#password-sub").textContent=p?"Replaces the one you sign in with now.":"Then you can sign in without waiting for an email link.",w.textContent=p?"Update password":"Set password"};return E(),document.querySelector("#account-password").onclick=()=>{f(!1),y.value="",v(""),g.showModal()},document.querySelector("#password-cancel").onclick=()=>g.close(),w.onclick=async()=>{const S=y.value;if(!S)return v("Enter a password.",!0);w.disabled=!0,v("Saving…");const{error:P}=await ne.auth.updateUser({password:S,data:{has_password:!0}});if(w.disabled=!1,P)return v(P.message,!0);p=!0,E(),y.value="",v("Saved. You can sign in with it from now on.")},document.querySelector("#account-signout").onclick=async()=>{await ea(),window.location.href="/"},document.addEventListener("click",S=>{c.contains(S.target)||f(!1)}),document.addEventListener("keydown",S=>{S.key==="Escape"&&f(!1)}),document.querySelector("#content")}function na(t=""){document.querySelector("#app").innerHTML=`
-    <div class="auth">
-      <div class="brand"><span class="brand-mark">C</span>CABEL</div>
-      <h1>Sign in</h1>
-      <p class="sub" style="margin-top:6px">Use your password, or have a one-time link emailed to you.</p>
-      <div class="panel">
-        <div class="stack">
-          <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
-          <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
+    </div>`,Dr().then(({data:S})=>{S&&(document.querySelector(".nav").innerHTML=o(S))}),cr(localStorage.getItem(lr)==="collapsed"),document.querySelectorAll(".sidebar-toggle").forEach(S=>{S.onclick=()=>{const P=!document.querySelector(".shell").classList.contains("collapsed");localStorage.setItem(lr,P?"collapsed":"open"),cr(P)}});const c=document.querySelector("#account"),h=document.querySelector("#account-btn"),u=document.querySelector("#account-theme-label"),f=S=>{c.classList.toggle("open",S),h.setAttribute("aria-expanded",String(S))},d=()=>{u.textContent=Mr()==="light"?"Dark theme":"Light theme"};d(),h.onclick=()=>f(!c.classList.contains("open")),document.querySelector("#account-theme").onclick=()=>{ta(),d()};let p=!!((T=t.user.user_metadata)!=null&&T.has_password);const g=document.querySelector("#password-dialog"),y=document.querySelector("#new-password"),w=document.querySelector("#password-save"),_=document.querySelector("#password-msg"),v=(S,P=!1)=>{_.textContent=S,_.classList.toggle("error",P)},E=()=>{const S=p?"Change password":"Set a password";document.querySelector("#account-password-label").textContent=S,document.querySelector("#password-title").textContent=S,document.querySelector("#password-sub").textContent=p?"Replaces the one you sign in with now.":"Then you can sign in without waiting for an email link.",w.textContent=p?"Update password":"Set password"};return E(),document.querySelector("#account-password").onclick=()=>{f(!1),y.value="",v(""),g.showModal()},document.querySelector("#password-cancel").onclick=()=>g.close(),w.onclick=async()=>{const S=y.value;if(!S)return v("Enter a password.",!0);w.disabled=!0,v("Saving…");const{error:P}=await ne.auth.updateUser({password:S,data:{has_password:!0}});if(w.disabled=!1,P)return v(P.message,!0);p=!0,E(),y.value="",v("Saved. You can sign in with it from now on.")},document.querySelector("#account-signout").onclick=async()=>{await ea(),window.location.href="/"},document.addEventListener("click",S=>{c.contains(S.target)||f(!1)}),document.addEventListener("keydown",S=>{S.key==="Escape"&&f(!1)}),document.querySelector("#content")}const na=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path
+  d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;function ia(t=""){document.querySelector("#app").innerHTML=`
+    <main class="auth">
+      <form class="auth-card" id="signin-form" novalidate>
+        <header class="auth-head">
+          <img class="auth-mark" src="/icons/icon-192.png" alt="" width="52" height="52" />
+          <h1>Welcome back</h1>
+          <p class="sub">Sign in to CABEL</p>
+        </header>
+
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <input id="email" name="email" type="email" inputmode="email"
+                 autocomplete="email" placeholder="you@example.com" autofocus />
         </div>
-        <div class="row" style="margin-top:12px"><button id="signin">Sign in</button></div>
-        <div class="msg" id="msg">${$(t)}</div>
-        <button class="link" id="magic">Email me a link instead</button>
-      </div>
-    </div>`;const e=document.querySelector("#email"),r=document.querySelector("#password"),s=[...document.querySelectorAll(".panel button")],n=aa("#msg"),i=async a=>{const o=e.value.trim();if(!o)return n("Enter your email address.",!0);s.forEach(l=>l.disabled=!0),n("");try{await a(o,r.value)}finally{s.forEach(l=>l.disabled=!1)}};document.querySelector("#signin").onclick=()=>i(async(a,o)=>{if(!o)return n("Enter your password, or use the email link.",!0);const{error:l}=await ne.auth.signInWithPassword({email:a,password:o});l&&n(l.message==="Invalid login credentials"?"Wrong password — or you haven't set one yet. Use the email link, then set a password from the hub.":l.message,!0)}),document.querySelector("#magic").onclick=()=>i(async a=>{const{error:o}=await ne.auth.signInWithOtp({email:a,options:{emailRedirectTo:window.location.origin}});n(o?o.message:"Link sent. Check your inbox, then come back here.",!!o)})}const ur=t=>t.map(e=>`<a class="card" href="${$(e.path)}">
+
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <div class="input-affix">
+            <input id="password" name="password" type="password"
+                   autocomplete="current-password" placeholder="••••••••" />
+            <button type="button" class="affix-btn" id="reveal"
+                    aria-label="Show password" aria-pressed="false">${na}</button>
+          </div>
+        </div>
+
+        <button class="block" id="signin" type="submit">Sign in</button>
+
+        <p class="msg" id="msg" role="alert" aria-live="polite">${$(t)}</p>
+
+        <div class="auth-divider"><span>or</span></div>
+
+        <button type="button" class="quiet block" id="magic">Email me a one-time link</button>
+      </form>
+    </main>`;const e=document.querySelector("#email"),r=document.querySelector("#password"),s=document.querySelector("#signin"),n=[...document.querySelectorAll(".auth-card button")],i=oa("#msg"),a=document.querySelector("#reveal");a.onclick=()=>{const l=r.type==="text";r.type=l?"password":"text",a.setAttribute("aria-pressed",String(!l)),a.setAttribute("aria-label",l?"Show password":"Hide password"),a.classList.toggle("on",!l),r.focus()};const o=async(l,c)=>{const h=e.value.trim();if(!h)return e.focus(),i("Enter your email address.",!0);n.forEach(f=>f.disabled=!0);const u=s.textContent;c&&(s.textContent=c),i("");try{await l(h,r.value)}finally{n.forEach(f=>f.disabled=!1),s.textContent=u}};document.querySelector("#signin-form").onsubmit=l=>{l.preventDefault(),o(async(c,h)=>{if(!h)return r.focus(),i("Enter your password, or use the email link.",!0);const{error:u}=await ne.auth.signInWithPassword({email:c,password:h});u&&i(u.message==="Invalid login credentials"?"Wrong password — or you haven't set one yet. Use the email link, then set a password from the hub.":u.message,!0)},"Signing in…")},document.querySelector("#magic").onclick=()=>o(async l=>{const{error:c}=await ne.auth.signInWithOtp({email:l,options:{emailRedirectTo:window.location.origin}});i(c?c.message:"Link sent. Check your inbox, then come back here.",!!c)})}const ur=t=>t.map(e=>`<a class="card" href="${$(e.path)}">
                 <strong>${$(e.name)}</strong>
                 <span>${$(e.description??"")}</span>
-              </a>`).join("");async function ia(t){const e=sa({session:t,title:"Your apps"}),r=Ur();r&&(e.innerHTML=ur(r));const{data:s,error:n}=await Dr();e.innerHTML=n?`<div class="panel">Couldn't load your apps: ${$(n.message)}</div>`:ur(s)}function aa(t){const e=document.querySelector(t);return(r,s=!1)=>{e.textContent=r,e.classList.toggle("error",s)}}async function Hr(){const{data:t}=await ne.auth.getSession();t.session?ia(t.session):na()}ne.auth.onAuthStateChange(t=>{(t==="SIGNED_IN"||t==="SIGNED_OUT")&&Hr()});Hr();
+              </a>`).join("");async function aa(t){const e=sa({session:t,title:"Your apps"}),r=Ur();r&&(e.innerHTML=ur(r));const{data:s,error:n}=await Dr();e.innerHTML=n?`<div class="panel">Couldn't load your apps: ${$(n.message)}</div>`:ur(s)}function oa(t){const e=document.querySelector(t);return(r,s=!1)=>{e.textContent=r,e.classList.toggle("error",s)}}async function Hr(){const{data:t}=await ne.auth.getSession();t.session?aa(t.session):ia()}ne.auth.onAuthStateChange(t=>{(t==="SIGNED_IN"||t==="SIGNED_OUT")&&Hr()});Hr();
