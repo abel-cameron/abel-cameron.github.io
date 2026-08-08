@@ -145,10 +145,12 @@ ${w}`}class U extends Error{constructor({message:e,code:r,cause:s,name:n}){var i
     <div class="filter-bar one-line">
       <input id="search" type="search" placeholder="Search titles…" autocomplete="off" />
       <div class="filter-group">
-        <span class="filter-title">Sort:</span>
-        <select id="sort">
-          ${Rs.map(e=>`<option value="${e.slug}">${e.label}</option>`).join("")}
-        </select>
+        <label class="filter-title" for="sort">Sort:</label>
+        <span class="select-shell">
+          <select id="sort">
+            ${Rs.map(e=>`<option value="${e.slug}">${e.label}</option>`).join("")}
+          </select>
+        </span>
       </div>
       <span class="toolbar-gap"></span>
       <button id="new-page">+ New page</button>
