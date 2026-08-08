@@ -98,6 +98,7 @@ ${w}`}class I extends Error{constructor({message:e,code:r,cause:s,name:n}){var i
                href="/nexus/#/task/${S(e.id)}"
                title="${S(r)} — ${S(e.title)}">${S(r)}</a>`}return Aa(t)?`<button class="task-chip" type="button" data-run="${S(t.id)}"
             title="Raise a Nexus task from this failure">+ Task</button>`:"—"}function Zr(t){if(!t.length)return'<div class="empty-state">No runs yet.</div>';const e=new Map(O.jigs.map(r=>[r.id,r]));return`
+    <div class="table-scroll">
     <table class="checklist">
       <thead><tr>
         <th>Result</th><th>Jig</th><th>Serial</th><th>Duration</th><th>Received</th><th>Task</th>
@@ -110,7 +111,8 @@ ${w}`}class I extends Error{constructor({message:e,code:r,cause:s,name:n}){var i
             <td>${S(Pt(r.received_at))}</td>
             <td>${La(r)}</td>
           </tr>`}).join("")}</tbody>
-    </table>`}function Na(){const t=O.runs.filter(r=>r.result==="pass").length,e=O.runs.filter(r=>r.result==="fail").length;return`
+    </table>
+    </div>`}function Na(){const t=O.runs.filter(r=>r.result==="pass").length,e=O.runs.filter(r=>r.result==="fail").length;return`
     <div class="view-head">
       <div>
         <h2>Recent runs</h2>
@@ -120,8 +122,8 @@ ${w}`}class I extends Error{constructor({message:e,code:r,cause:s,name:n}){var i
     </div>
     <div class="msg" id="msg"></div>
     <div class="dash-stats" style="max-width:520px;margin-bottom:20px">
-      <div class="dash-stat" style="--col-indicator:${RESULTS.pass.colour}"><b>${t}</b><span>Passed</span></div>
-      <div class="dash-stat" style="--col-indicator:${RESULTS.fail.colour}"><b>${e}</b><span>Failed</span></div>
+      <div class="dash-stat" style="--col-indicator:var(--result-pass)"><b>${t}</b><span>Passed</span></div>
+      <div class="dash-stat" style="--col-indicator:var(--result-fail)"><b>${e}</b><span>Failed</span></div>
     </div>
     <div class="panel">${Zr(O.runs)}</div>`}function Ua(){return`
     <div class="view-head">
